@@ -1,22 +1,25 @@
 package kz.iitu.userservice;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
+@Data
+@NoArgsConstructor
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+    @Column(name = "fullname")
     private String fullName;
-    private String gender;
+    @Column(name = "password")
+    private String password;
 
-    public User() {
-    }
 
-    public User(String id, String fullName, String gender) {
-        this.id = id;
-        this.fullName = fullName;
-        this.gender = gender;
-    }
 }
